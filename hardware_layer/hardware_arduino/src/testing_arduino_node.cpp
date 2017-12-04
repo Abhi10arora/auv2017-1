@@ -7,15 +7,15 @@
 #include <Wire.h>
 #include "MS5837.h"
 
-#define pwmPinWest 3
-#define pwmPinEast 2
+#define pwmPinWest 2
+#define pwmPinEast 3
 #define directionPinEast1 30
 #define directionPinEast2 31
 #define directionPinWest1 32
 #define directionPinWest2 33
 
-#define pwmPinNorthSway 5
-#define pwmPinSouthSway 4
+#define pwmPinNorthSway 4
+#define pwmPinSouthSway 5
 #define directionPinSouthSway1 27
 #define directionPinSouthSway2 26
 #define directionPinNorthSway1 29
