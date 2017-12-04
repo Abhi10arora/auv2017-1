@@ -133,20 +133,7 @@ void thrusterWest(int pwm, int isForward)
   }
 }
 
-void PWMCbForwardRight(const std_msgs::Int32 msg)
-{
-  int pwm = msg.data;
-  if (pwm > 0)
-  {
-    thrusterEast(msg.data, true);
-  }
-  else
-  {
-    thrusterEast(msg.data, false);
-  }
-}
-
-void PWMCbForwardLeft(const std_msgs::Int32 msg)
+void PWMCbForwardRight(const std_msgs::Int32& msg)
 {
   int pwm = msg.data;
   if (pwm > 0)
@@ -159,20 +146,20 @@ void PWMCbForwardLeft(const std_msgs::Int32 msg)
   }
 }
 
-void PWMCbSidewardFront(const std_msgs::Int32 msg)
+void PWMCbForwardLeft(const std_msgs::Int32& msg)
 {
   int pwm = msg.data;
   if (pwm > 0)
   {
-    thrusterNorthSway(pwm, true);
+    thrusterEast(msg.data, true);
   }
   else
   {
-    thrusterNorthSway(pwm, false);
+    thrusterEast(msg.data, false);
   }
 }
 
-void PWMCbSidewardBack(const std_msgs::Int32 msg)
+void PWMCbSidewardFront(const std_msgs::Int32& msg)
 {
   int pwm = msg.data;
   if (pwm > 0)
@@ -185,7 +172,20 @@ void PWMCbSidewardBack(const std_msgs::Int32 msg)
   }
 }
 
-void PWMCbUpwardFront(const std_msgs::Int32 msg)
+void PWMCbSidewardBack(const std_msgs::Int32& msg)
+{
+  int pwm = msg.data;
+  if (pwm > 0)
+  {
+    thrusterNorthSway(pwm, true);
+  }
+  else
+  {
+    thrusterNorthSway(pwm, false);
+  }
+}
+
+void PWMCbUpwardFront(const std_msgs::Int32& msg)
 {
   int pwm = msg.data;
   if (pwm > 0)
@@ -198,7 +198,7 @@ void PWMCbUpwardFront(const std_msgs::Int32 msg)
   }
 }
 
-void PWMCbUpwardBack(const std_msgs::Int32 msg)
+void PWMCbUpwardBack(const std_msgs::Int32& msg)
 {
   int pwm = msg.data;
   if (pwm > 0)
@@ -211,31 +211,31 @@ void PWMCbUpwardBack(const std_msgs::Int32 msg)
   }
 }
 
-void PWMCbTurn(const std_msgs::Int32 msg)
+void PWMCbTurn(const std_msgs::Int32& msg)
 {
-    if (msg.data > 0)
-    {
-      thrusterEast(msg.data, true);
-      thrusterWest(msg.data, false);
-    }
-    else
-    {
-      thrusterEast(msg.data, false);
-      thrusterWest(msg.data, true);
-    }
-  }
-  else
-  {
-    if (msg.data > 0)
-    {
-      thrusterNorthSway(msg.data, false);
-      thrusterSouthSway(msg.data, true);
-    }
-    else
-    {
-      thrusterNorthSway(msg.data, true);
-      thrusterSouthSway(msg.data, false);
-    }
+  //   if (msg.data > 0)
+  //   {
+  //     thrusterEast(msg.data, true);
+  //     thrusterWest(msg.data, false);
+  //   }
+  //   else
+  //   {
+  //     thrusterEast(msg.data, false);
+  //     thrusterWest(msg.data, true);
+  //   }
+  // }
+  // else
+  // {
+  //   if (msg.data > 0)
+  //   {
+  //     thrusterNorthSway(msg.data, false);
+  //     thrusterSouthSway(msg.data, true);
+  //   }
+  //   else
+  //   {
+  //     thrusterNorthSway(msg.data, true);
+  //     thrusterSouthSway(msg.data, false);
+  //   }
 }
 
 ros::Subscriber<std_msgs::Int32> subPwmForwardRight("/pwm/forwardRight", &PWMCbForwardRight);
